@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sidebar-bg: #111827;
+  --sidebar-hover: #1f2937;
+  --sidebar-active: #1f2937;
+  --sidebar-text: #9ca3af;
+  --sidebar-text-active: #f9fafb;
+  --brand: #0ea5e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* react-day-picker custom styles */
+.rdp {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: #0ea5e9;
+  --rdp-background-color: #e0f2fe;
+  --rdp-accent-color-dark: #0284c7;
+  --rdp-background-color-dark: #1d4ed8;
+  --rdp-outline: 2px solid var(--rdp-accent-color);
+  --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
+  margin: 0;
+}
+
+.rdp-months {
+  display: flex;
+  flex-direction: column;
+}
+
+.rdp-month {
+  width: 100%;
+}
+
+.rdp-table {
+  width: 100%;
+  max-width: none;
+}
+
+.rdp-head_cell {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+}
+
+.rdp-day {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #374151;
+  transition: background 0.15s, color 0.15s;
+}
+
+.rdp-day:hover:not([disabled]) {
+  background: #e0f2fe !important;
+  color: #0284c7 !important;
+}
+
+.rdp-day_selected {
+  background: #0ea5e9 !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.rdp-day_today {
+  font-weight: 700;
+  color: #0ea5e9;
+}
+
+.rdp-day_outside {
+  color: #d1d5db;
+}
+
+.rdp-day_disabled {
+  color: #e5e7eb;
+  cursor: not-allowed;
+}
+
+.rdp-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.rdp-caption_label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.rdp-nav_button {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  transition: background 0.15s;
+}
+
+.rdp-nav_button:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

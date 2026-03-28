@@ -1,0 +1,52 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model EventType {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  duration    Int       // duration in minutes
+  slug        String    @unique
+  color       String    @default("#0ea5e9")
+  isActive    Boolean   @default(true)
+  bookings    Booking[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Availability {
+  id        String  @id @default(cuid())
+  timezone  String  @default("Asia/Kolkata")
+  monday    Boolean @default(true)
+  tuesday   Boolean @default(true)
+  wednesday Boolean @default(true)
+  thursday  Boolean @default(true)
+  friday    Boolean @default(true)
+  saturday  Boolean @default(false)
+  sunday    Boolean @default(false)
+  startTime String  @default("09:00") // "HH:mm" format
+  endTime   String  @default("17:00") // "HH:mm" format
+}
+
+model Booking {
+  id          String    @id @default(cuid())
+  eventTypeId String
+  eventType   EventType @relation(fields: [eventTypeId], references: [id], onDelete: Cascade)
+  name        String
+  email       String
+  startTime   DateTime
+  endTime     DateTime
+  status      String    @default("confirmed") // "confirmed" | "cancelled"
+  cancelToken String    @unique @default(cuid())
+  notes       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
