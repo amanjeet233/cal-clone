@@ -4,12 +4,12 @@
 @tailwind utilities;
 
 :root {
-  --sidebar-bg: #111827;
-  --sidebar-hover: #1f2937;
-  --sidebar-active: #1f2937;
-  --sidebar-text: #9ca3af;
-  --sidebar-text-active: #f9fafb;
-  --brand: #0ea5e9;
+  --sidebar-bg: #f9fafb;
+  --sidebar-hover: #f3f4f6;
+  --sidebar-active: #e5e7eb;
+  --sidebar-text: #4b5563;
+  --sidebar-text-active: #111827;
+  --brand: #111827;
 }
 
 * {
@@ -40,11 +40,11 @@ body {
 
 /* react-day-picker custom styles */
 .rdp {
-  --rdp-cell-size: 40px;
-  --rdp-accent-color: #0ea5e9;
-  --rdp-background-color: #e0f2fe;
-  --rdp-accent-color-dark: #0284c7;
-  --rdp-background-color-dark: #1d4ed8;
+  --rdp-cell-size: 44px; /* Cal.com uses slightly larger square blocks */
+  --rdp-accent-color: #111827;
+  --rdp-background-color: #f3f4f6;
+  --rdp-accent-color-dark: #000000;
+  --rdp-background-color-dark: #e5e7eb;
   --rdp-outline: 2px solid var(--rdp-accent-color);
   --rdp-outline-selected: 2px solid rgba(0, 0, 0, 0.75);
   margin: 0;
@@ -62,6 +62,8 @@ body {
 .rdp-table {
   width: 100%;
   max-width: none;
+  border-collapse: separate;
+  border-spacing: 4px 8px; /* Added spacing between calendar squares matching Cal.com */
 }
 
 .rdp-head_cell {
@@ -73,37 +75,60 @@ body {
 }
 
 .rdp-day {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 6px; /* slightly sharper rounded corners like Cal.com */
   font-size: 0.875rem;
   font-weight: 400;
   color: #374151;
   transition: background 0.15s, color 0.15s;
+  position: relative; /* needed for the dot */
+}
+
+.rdp-day:not([disabled]) {
+  background: #f3f4f6; /* Gray background for all active dates */
+  font-weight: 500;
+  border: 1px solid transparent;
 }
 
 .rdp-day:hover:not([disabled]) {
-  background: #e0f2fe !important;
-  color: #0284c7 !important;
+  background: #e5e7eb !important;
+  color: #111827 !important;
 }
 
 .rdp-day_selected {
-  background: #0ea5e9 !important;
+  background: #111827 !important;
   color: white !important;
   font-weight: 600;
 }
 
+.rdp-day_selected::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .rdp-day_today {
   font-weight: 700;
-  color: #0ea5e9;
+  color: #111827;
 }
 
 .rdp-day_outside {
   color: #d1d5db;
+  opacity: 0; /* Cal.com HIDES outside days from previous month entirely */
+  pointer-events: none;
 }
 
 .rdp-day_disabled {
-  color: #e5e7eb;
+  color: #9ca3af; /* A bit more visible gray for disabled days */
+  background: transparent !important;
   cursor: not-allowed;
 }
 
@@ -112,6 +137,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
+  padding: 0 4px;
 }
 
 .rdp-caption_label {
@@ -129,6 +155,7 @@ body {
   justify-content: center;
   color: #6b7280;
   transition: background 0.15s;
+  background: transparent;
 }
 
 .rdp-nav_button:hover {

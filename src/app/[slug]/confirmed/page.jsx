@@ -58,22 +58,19 @@ function ConfirmedContent() {
 
   return (
     // Full-width public page
-    <div
-      className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4"
-      style={{ marginLeft: "-16rem" }}
-    >
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
       <div className="w-full max-w-lg">
         {/* Success card */}
         <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
-          {/* Green top banner */}
-          <div className="bg-gradient-to-r from-emerald-500 to-teal-500 px-8 py-8 text-center">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle size={32} className="text-white" strokeWidth={2} />
+          {/* Top banner */}
+          <div className="bg-white px-8 py-8 text-center border-b border-gray-100">
+            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-200">
+              <CheckCircle size={32} className="text-zinc-900" strokeWidth={2} />
             </div>
-            <h1 className="text-2xl font-bold text-white mb-1">
+            <h1 className="text-2xl font-bold text-gray-900 mb-1">
               {rescheduled ? "Meeting Rescheduled!" : "You're Booked!"}
             </h1>
-            <p className="text-emerald-100 text-sm">
+            <p className="text-gray-500 text-sm">
               {rescheduled ? "Your updated time has been confirmed." : "A confirmation has been sent to your email."}
             </p>
           </div>
@@ -97,8 +94,8 @@ function ConfirmedContent() {
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Calendar size={15} className="text-sky-500" />
+                    <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Calendar size={15} className="text-zinc-900" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">
@@ -114,8 +111,8 @@ function ConfirmedContent() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Clock size={15} className="text-sky-500" />
+                    <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Clock size={15} className="text-zinc-900" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">
@@ -132,8 +129,8 @@ function ConfirmedContent() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Video size={15} className="text-sky-500" />
+                    <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Video size={15} className="text-zinc-900" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">
@@ -147,8 +144,8 @@ function ConfirmedContent() {
 
                   <div className="border-t border-gray-100 pt-4">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 bg-violet-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <User size={15} className="text-violet-500" />
+                      <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <User size={15} className="text-zinc-900" />
                       </div>
                       <div>
                         <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">
@@ -160,8 +157,8 @@ function ConfirmedContent() {
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-violet-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Mail size={15} className="text-violet-500" />
+                      <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Mail size={15} className="text-zinc-900" />
                       </div>
                       <div>
                         <p className="text-xs text-gray-400 font-medium uppercase tracking-wide">
@@ -194,7 +191,7 @@ function ConfirmedContent() {
             <div className="mt-8 space-y-3">
               <Link
                 href={`/${slug}`}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-semibold transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-zinc-900 hover:bg-black text-white rounded-lg text-sm font-semibold transition-colors"
               >
                 Book Another Meeting
               </Link>
@@ -227,7 +224,7 @@ function ConfirmedContent() {
             {rescheduled ? "Update Notification Sent" : "Invitation Sent"}
           </p>
           <p className="text-xs text-gray-400 mt-1">
-            Simulated email successfully dispatched<br />to <span className="text-sky-400 font-medium">{booking?.email}</span>
+            Simulated email successfully dispatched<br />to <span className="text-gray-300 font-medium">{booking?.email}</span>
           </p>
         </div>
         <button 

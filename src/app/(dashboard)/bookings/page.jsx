@@ -33,7 +33,7 @@ function BookingCard({ booking, onCancel }) {
                   ? "#9ca3af"
                   : isPastBooking
                   ? "#d1d5db"
-                  : booking.eventType?.color || "#0ea5e9",
+                  : booking.eventType?.color || "#111827",
               }}
             />
             <span className="text-sm font-semibold text-gray-900">
@@ -80,7 +80,7 @@ function BookingCard({ booking, onCancel }) {
             <Mail size={14} className="text-gray-400 flex-shrink-0" />
             <a
               href={`mailto:${booking.email}`}
-              className="hover:text-sky-600 transition-colors"
+              className="hover:text-black transition-colors font-medium text-zinc-900"
             >
               {booking.email}
             </a>
@@ -98,7 +98,7 @@ function BookingCard({ booking, onCancel }) {
         <div className="px-5 py-3 border-t border-gray-100 flex items-center justify-end gap-3">
           <Link
             href={`/${booking.eventType?.slug}?reschedule=${booking.id}`}
-            className="flex items-center gap-1.5 text-xs text-sky-600 hover:text-sky-800 transition-colors font-medium"
+            className="flex items-center gap-1.5 text-xs text-zinc-900 hover:text-black transition-colors font-semibold"
           >
             <CalendarClock size={13} />
             Reschedule
@@ -188,7 +188,7 @@ export default function BookingsPage() {
               onClick={() => setTab(t.key)}
               className={`flex items-center gap-2 px-4 py-3.5 text-sm font-medium border-b-2 transition-colors ${
                 tab === t.key
-                  ? "border-sky-500 text-sky-600"
+                  ? "border-zinc-900 text-zinc-900"
                   : "border-transparent text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -196,7 +196,7 @@ export default function BookingsPage() {
               <span
                 className={`text-xs px-1.5 py-0.5 rounded-full ${
                   tab === t.key
-                    ? "bg-sky-100 text-sky-700"
+                    ? "bg-zinc-100 text-zinc-900"
                     : "bg-gray-100 text-gray-500"
                 }`}
               >

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowLeft, Clock, Link2, Palette, Trash2 } from "lucide-react";
 
 const COLORS = [
-  "#0ea5e9",
+  "#111827",
   "#8b5cf6",
   "#10b981",
   "#f59e0b",
@@ -32,7 +32,7 @@ export default function EditEventTypePage() {
     description: "",
     duration: 30,
     slug: "",
-    color: "#0ea5e9",
+    color: "#111827",
   });
 
   useEffect(() => {
@@ -153,7 +153,7 @@ export default function EditEventTypePage() {
                   onChange={(e) =>
                     setForm((prev) => ({ ...prev, title: e.target.value }))
                   }
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent"
                   required
                 />
               </div>
@@ -170,7 +170,7 @@ export default function EditEventTypePage() {
                     }))
                   }
                   rows={3}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent resize-none"
                 />
               </div>
             </div>
@@ -190,8 +190,8 @@ export default function EditEventTypePage() {
                   onClick={() => setForm((prev) => ({ ...prev, duration: d }))}
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all ${
                     form.duration === d
-                      ? "bg-sky-500 text-white border-sky-500"
-                      : "bg-white text-gray-700 border-gray-300 hover:border-sky-300"
+                      ? "bg-zinc-900 text-white border-zinc-900"
+                      : "bg-white text-gray-700 border-gray-300 hover:border-black hover:text-black"
                   }`}
                 >
                   {d} min
@@ -221,7 +221,7 @@ export default function EditEventTypePage() {
                       .replace(/[^a-z0-9-]/g, ""),
                   }))
                 }
-                className="flex-1 px-3 py-2.5 border border-gray-300 rounded-r-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                className="flex-1 px-3 py-2.5 border border-gray-300 rounded-r-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent"
                 required
               />
             </div>
@@ -255,7 +255,7 @@ export default function EditEventTypePage() {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-sky-500 hover:bg-sky-600 disabled:opacity-60 text-white py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm"
+              className="flex-1 bg-zinc-900 hover:bg-black disabled:opacity-60 text-white py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm"
             >
               {loading ? "Saving..." : "Save Changes"}
             </button>

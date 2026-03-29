@@ -140,7 +140,7 @@ export default function AvailabilityPage() {
             className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all shadow-sm ${
               saved
                 ? "bg-green-500 text-white"
-                : "bg-sky-500 hover:bg-sky-600 text-white disabled:opacity-60"
+                : "bg-zinc-900 hover:bg-black text-white disabled:opacity-60"
             }`}
           >
             {saved ? (
@@ -170,7 +170,7 @@ export default function AvailabilityPage() {
             onChange={(e) =>
               setForm((prev) => ({ ...prev, timezone: e.target.value }))
             }
-            className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent bg-white"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent bg-white"
           >
             {TIMEZONES.map((tz) => (
               <option key={tz} value={tz}>
@@ -194,7 +194,7 @@ export default function AvailabilityPage() {
                 onChange={(e) =>
                   setForm((prev) => ({ ...prev, startTime: e.target.value }))
                 }
-                className="w-full px-3 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent bg-white"
+                className="w-full px-3 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent bg-white"
               >
                 {TIME_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -213,7 +213,7 @@ export default function AvailabilityPage() {
                 onChange={(e) =>
                   setForm((prev) => ({ ...prev, endTime: e.target.value }))
                 }
-                className="w-full px-3 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent bg-white"
+                className="w-full px-3 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent bg-white"
               >
                 {TIME_OPTIONS.map((opt) => (
                   <option key={opt.value} value={opt.value}>
@@ -244,7 +244,7 @@ export default function AvailabilityPage() {
                 key={day.key}
                 className={`flex items-center justify-between px-4 py-3 rounded-lg border cursor-pointer transition-all ${
                   form[day.key]
-                    ? "border-sky-200 bg-sky-50"
+                    ? "border-zinc-900 bg-gray-50"
                     : "border-gray-200 hover:border-gray-300"
                 }`}
               >
@@ -252,7 +252,7 @@ export default function AvailabilityPage() {
                   <div
                     className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all ${
                       form[day.key]
-                        ? "bg-sky-500 border-sky-500"
+                        ? "bg-zinc-900 border-zinc-900"
                         : "border-gray-300"
                     }`}
                   >
@@ -269,7 +269,7 @@ export default function AvailabilityPage() {
                   </span>
                 </div>
                 {form[day.key] && (
-                  <span className="text-xs text-sky-600 font-medium">
+                  <span className="text-xs text-zinc-600 font-medium">
                     {form.startTime} – {form.endTime}
                   </span>
                 )}
@@ -291,7 +291,7 @@ export default function AvailabilityPage() {
           className={`w-full py-3 rounded-xl text-sm font-medium transition-all shadow-sm ${
             saved
               ? "bg-green-500 text-white"
-              : "bg-sky-500 hover:bg-sky-600 text-white disabled:opacity-60"
+              : "bg-zinc-900 hover:bg-black text-white disabled:opacity-60"
           }`}
         >
           {saved ? "✓ Changes Saved!" : saving ? "Saving..." : "Save Availability"}

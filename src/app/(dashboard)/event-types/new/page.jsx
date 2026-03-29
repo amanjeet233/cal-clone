@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowLeft, Clock, Link2, Palette } from "lucide-react";
 
 const COLORS = [
-  "#0ea5e9", // sky
+  "#111827", // black
   "#8b5cf6", // violet
   "#10b981", // emerald
   "#f59e0b", // amber
@@ -28,7 +28,7 @@ export default function NewEventTypePage() {
     description: "",
     duration: 30,
     slug: "",
-    color: "#0ea5e9",
+    color: "#111827",
   });
 
   function handleTitleChange(e) {
@@ -115,7 +115,7 @@ export default function NewEventTypePage() {
                   value={form.title}
                   onChange={handleTitleChange}
                   placeholder="e.g. 30 Minute Meeting"
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent transition-shadow"
                   required
                 />
               </div>
@@ -134,7 +134,7 @@ export default function NewEventTypePage() {
                   }
                   placeholder="Describe what this event is about..."
                   rows={3}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent transition-shadow resize-none"
                 />
               </div>
             </div>
@@ -154,8 +154,8 @@ export default function NewEventTypePage() {
                   onClick={() => setForm((prev) => ({ ...prev, duration: d }))}
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all ${
                     form.duration === d
-                      ? "bg-sky-500 text-white border-sky-500 shadow-sm"
-                      : "bg-white text-gray-700 border-gray-300 hover:border-sky-300 hover:text-sky-600"
+                      ? "bg-zinc-900 text-white border-zinc-900 shadow-sm"
+                      : "bg-white text-gray-700 border-gray-300 hover:border-black hover:text-black"
                   }`}
                 >
                   {d} min
@@ -177,7 +177,7 @@ export default function NewEventTypePage() {
                       duration: parseInt(e.target.value) || 30,
                     }))
                   }
-                  className="w-24 px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                  className="w-24 px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent"
                 />
                 <span className="text-sm text-gray-500">min</span>
               </div>
@@ -210,7 +210,7 @@ export default function NewEventTypePage() {
                     }))
                   }
                   placeholder="30min"
-                  className="flex-1 px-3 py-2.5 border border-gray-300 rounded-r-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-shadow"
+                  className="flex-1 px-3 py-2.5 border border-gray-300 rounded-r-lg text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent transition-shadow"
                   required
                 />
               </div>
@@ -248,7 +248,7 @@ export default function NewEventTypePage() {
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 bg-sky-500 hover:bg-sky-600 disabled:opacity-60 text-white py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm"
+              className="flex-1 bg-zinc-900 hover:bg-black disabled:opacity-60 text-white py-2.5 rounded-lg text-sm font-medium transition-colors shadow-sm"
             >
               {loading ? "Creating..." : "Create Event Type"}
             </button>

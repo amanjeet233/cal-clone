@@ -49,7 +49,7 @@ export async function PUT(request, { params }) {
         description: description || null,
         duration: parseInt(duration),
         slug,
-        color: color || "#0ea5e9",
+        color: color || "#111827",
       },
     });
 

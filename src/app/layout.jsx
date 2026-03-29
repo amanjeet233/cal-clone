@@ -1,22 +1,16 @@
 // src/app/layout.jsx
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
 
 export const metadata = {
-  title: "CalSchedule - Scheduling Made Simple",
-  description: "Schedule meetings effortlessly with your personalized booking page",
+  title: "Cal.com Clone - The better way to schedule your meetings",
+  description: "A high-fidelity clone of Cal.com for scheduling logic.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 min-h-screen">
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <main className="flex-1 ml-64 min-h-screen">
-            {children}
-          </main>
-        </div>
+      <body className="bg-white min-h-screen font-sans text-gray-900 antialiased">
+        {children}
       </body>
     </html>
   );

@@ -190,10 +190,7 @@ function BookingContent() {
 
   if (notFound) {
     return (
-      <div
-        className="min-h-screen flex items-center justify-center bg-gray-50"
-        style={{ marginLeft: "-16rem" }}
-      >
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center px-4">
           <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <AlertCircle size={28} className="text-red-400" />
@@ -211,10 +208,7 @@ function BookingContent() {
 
   if (!eventType) {
     return (
-      <div
-        className="min-h-screen flex items-center justify-center bg-gray-50"
-        style={{ marginLeft: "-16rem" }}
-      >
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <Loader2 size={24} className="text-gray-400 animate-spin" />
       </div>
     );
@@ -222,13 +216,10 @@ function BookingContent() {
 
   return (
     // Full-width public page - override the sidebar margin
-    <div
-      className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4"
-      style={{ marginLeft: "-16rem" }}
-    >
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
       <div className="w-full max-w-4xl">
         {/* Main booking card */}
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-[24px] shadow-sm border border-gray-200 overflow-hidden">
           <div className="flex flex-col md:flex-row min-h-[540px]">
             {/* Left Panel - Event Info */}
             <div className="md:w-80 flex-shrink-0 bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200 p-8">
@@ -247,7 +238,7 @@ function BookingContent() {
               )}
 
               {/* Organizer avatar */}
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-400 to-violet-500 flex items-center justify-center text-white text-lg font-bold mb-4">
+              <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 text-lg font-bold mb-4">
                 A
               </div>
 
@@ -288,11 +279,11 @@ function BookingContent() {
                 <div className="mt-6 pt-6 border-t border-gray-200">
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sm text-gray-700 font-medium">
-                      <Calendar size={14} className="text-sky-500" />
+                      <Calendar size={14} className="text-zinc-600" />
                       <span>{format(selectedDate, "EEEE, MMMM d")}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-700">
-                      <Clock size={14} className="text-sky-500" />
+                      <Clock size={14} className="text-zinc-600" />
                       <span>
                         {get12HourTimeFormat(selectedSlot)} –{" "}
                         {(() => {
@@ -315,11 +306,11 @@ function BookingContent() {
             <div className="flex-1 p-8">
               {step === "calendar" && (
                 <>
-                  <h2 className="text-base font-semibold text-gray-900 mb-6">
+                  <h2 className="text-[17px] font-bold text-gray-900 mb-6">
                     Select a Date & Time
                   </h2>
 
-                  <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="flex flex-col lg:flex-row gap-10">
                     {/* Calendar */}
                     <div className="flex-shrink-0">
                       <DayPicker
@@ -328,15 +319,26 @@ function BookingContent() {
                         onSelect={setSelectedDate}
                         disabled={isDateDisabled}
                         fromDate={new Date()}
+                        showOutsideDays
                       />
                     </div>
 
                     {/* Time Slots */}
                     {selectedDate && (
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-gray-900 mb-3">
-                          {format(selectedDate, "EEEE, MMMM d")}
-                        </p>
+                      <div className="flex-1 min-w-0 border-t lg:border-t-0 lg:border-l border-gray-100 lg:pl-10 pt-8 lg:pt-0">
+                        <div className="flex items-center justify-between mb-4">
+                          <p className="text-base font-medium text-gray-900">
+                            {format(selectedDate, "EEE d")}
+                          </p>
+                          <div className="flex items-center bg-gray-100 p-0.5 rounded-md">
+                            <button className="px-3 py-1 text-xs font-medium bg-white shadow-sm rounded-sm text-gray-900">
+                              12h
+                            </button>
+                            <button className="px-3 py-1 text-xs font-medium text-gray-500 hover:text-gray-900 rounded-sm">
+                              24h
+                            </button>
+                          </div>
+                        </div>
 
                         {loadingSlots ? (
                           <div className="flex items-center gap-2 text-gray-400 py-4">
@@ -346,14 +348,11 @@ function BookingContent() {
                         ) : slots.length === 0 ? (
                           <div className="text-center py-8">
                             <p className="text-sm text-gray-400">
-                              No available slots for this day.
-                            </p>
-                            <p className="text-xs text-gray-300 mt-1">
-                              Try selecting another date.
+                              No slots available
                             </p>
                           </div>
                         ) : (
-                          <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
+                          <div className="space-y-3 max-h-[380px] overflow-y-auto pr-2 no-scrollbar">
                             {slots.map((slot) => (
                               <button
                                 key={slot}
@@ -361,13 +360,9 @@ function BookingContent() {
                                   setSelectedSlot(slot);
                                   setStep("form");
                                 }}
-                                className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg border-2 border-sky-200 bg-sky-50 hover:bg-sky-500 hover:border-sky-500 hover:text-white text-sky-700 text-sm font-medium transition-all group"
+                                className="w-full flex items-center justify-center py-3 rounded-md border border-gray-300 hover:border-black hover:border-2 hover:py-[11px] text-gray-800 text-sm font-medium transition-all group"
                               >
-                                <span>{get12HourTimeFormat(slot)}</span>
-                                <ChevronRight
-                                  size={14}
-                                  className="opacity-50 group-hover:opacity-100"
-                                />
+                                {get12HourTimeFormat(slot)}
                               </button>
                             ))}
                           </div>
@@ -417,7 +412,7 @@ function BookingContent() {
                             }))
                           }
                           placeholder="John Doe"
-                          className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                          className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent"
                           required
                         />
                       </div>
@@ -442,7 +437,7 @@ function BookingContent() {
                             }))
                           }
                           placeholder="john@example.com"
-                          className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+                          className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent"
                           required
                         />
                       </div>
@@ -470,7 +465,7 @@ function BookingContent() {
                           }
                           placeholder="What would you like to discuss?"
                           rows={3}
-                          className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent resize-none"
+                          className="w-full pl-9 pr-3.5 py-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900 focus:border-transparent resize-none"
                         />
                       </div>
                     </div>
@@ -478,7 +473,7 @@ function BookingContent() {
                     <button
                       onClick={handleBook}
                       disabled={submitting || !form.name || !form.email}
-                      className="w-full bg-sky-500 hover:bg-sky-600 disabled:opacity-60 disabled:cursor-not-allowed text-white py-3 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
+                      className="w-full bg-zinc-900 hover:bg-black disabled:opacity-60 disabled:cursor-not-allowed text-white py-3 rounded-lg text-sm font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
                     >
                       {submitting ? (
                         <>
